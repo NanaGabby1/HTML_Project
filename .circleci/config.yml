@@ -11,7 +11,12 @@ jobs:
       - checkout
       - run: java --version
       - run: gradle
-      - run: ~index.html
+      - run: import org.eclipse.swt.program.Program;
+            public class MainClass {
+              public static void main(String[] args) {
+                Program.launch("index.html");
+              }
+            }
 
       - run:
           name: Save test results
