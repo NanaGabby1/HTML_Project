@@ -9,8 +9,6 @@ jobs:
 
     steps:
       - checkout
-      - run: java --version
-      - run: ./gradlew clean build
 
       - store_test_results:
           path: build/test-results
