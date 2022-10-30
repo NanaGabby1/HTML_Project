@@ -10,7 +10,6 @@ jobs:
     steps:
       - checkout
       - run: java --version
-      - run: gradle init
       - run: ./gradlew clean build
 
       - store_test_results:
