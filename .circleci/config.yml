@@ -11,7 +11,6 @@ jobs:
       - checkout
       - run: java --version
       - run: gradle
-      - run: -target/index.html
 
       - run:
           name: Save test results
