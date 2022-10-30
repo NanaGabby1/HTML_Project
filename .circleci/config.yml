@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - checkout
-      - run: java --version
+      - run: gradle init
       - run: gradle test
 
       - store_test_results:
