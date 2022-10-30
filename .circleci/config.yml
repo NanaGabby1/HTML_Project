@@ -10,8 +10,8 @@ jobs:
     steps:
       - checkout
       - run: java --version
-      - run: gradle init- run: gradle init
-      - run: gradle test
+      - run: gradle init
+      - run: ./gradlew clean build
 
       - store_test_results:
           path: build/test-results
