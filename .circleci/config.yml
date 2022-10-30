@@ -10,7 +10,7 @@ jobs:
     steps:
       - checkout
       - run: java --version
-      - run: grade test
+      - run: gradle test
 
       - store_test_results:
           path: build/test-results
