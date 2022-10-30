@@ -1,43 +1,19 @@
 version: 2.1
+
 jobs:
-  build:
+  build-and-test:
     docker:
       - image: cimg/openjdk:19.0.1
-
-    environment:
-      JVM_OPTS: -Xmx3200m
-
     steps:
       - checkout
-      - run: java --version
-      - run: gradle
-
       - run:
-          name: Save test results
-          command: |
-            mkdir -p ~/test-results/junit/
-            find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} ~/test-results/junit/ \;
-          when: always
-      - store_test_results:
-          path: ~/test-results/junit
-      - store_artifacts:
-          path: ~/test-results/junit
+          name: Build
+          command: mvn -B -DskipTests clean package
+      - run:
+          name: Test
+          command: ~index.html
 
-      - store_test_results:
-          path: build/test-results
-
-      - store_artifacts:
-          path: build/reports/tests/test
-          destination: test_result
-
-      - store_artifacts:
-          path: build/reports/jacoco
-          destination: test_coverage
-
-      - store_artifacts:
-          path: build/reports/pmd
-          destination: pmd
-
-      - store_artifacts:
-          path: build/reports/checkstyle
-          destination: checkstyle
+workflows:
+  sample:
+    jobs:
+      - build-and-test
