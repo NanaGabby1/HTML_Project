@@ -10,7 +10,7 @@ jobs:
     steps:
       - checkout
       - run: java --version
-      - run: mvn -e test
+      - run: grade test
 
       - store_test_results:
           path: build/test-results
