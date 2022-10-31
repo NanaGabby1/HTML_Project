@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  build:
+  build_test:
     docker:
       - image: cimg/openjdk:19.0.1
 
@@ -23,3 +23,7 @@ jobs:
       - store_artifacts:
           path: ~/test-results/junit
 
+workflows:
+  build_and_test:
+    jobs:
+      - build_test
